@@ -1,0 +1,53 @@
+name: github.com/opspec-pkgs/azure.functionapp.appsettings.set
+description: sets azure functionapp appsettings
+inputs:
+  subscriptionId:
+    string:
+      constraints: { minLength: 1 }
+      description: id of azure subscription
+  loginId:
+    string:
+      constraints: { minLength: 1 }
+      description: id of user, service principal, or app to login with
+  loginSecret:
+    string:
+      constraints: { minLength: 1 }
+      description: secret of user, service principal, or app to login with
+      isSecret: true
+  name:
+    string:
+      constraints: { minLength: 1 }
+      description: name for functionapp
+  resourceGroup:
+    string:
+      constraints: { minLength: 1 }
+      description: resource group for functionapp
+  settings:
+    string:
+      constraints: { minLength: 1 }
+      description: space separated appsettings (in format 'name=value') for the functionapp
+  loginTenantId:
+    string:
+      constraints: { minLength: 1 }
+      description: tenant id of user, service principal, or app to login with
+      default: ' '
+  loginType:
+    string:
+      constraints: { enum: [user, sp]}
+      description: type of login; 'user' (default) or 'sp' for service principal
+      default: user
+version: 1.0.0
+run:
+  container:
+    image: { ref: 'azuresdk/azure-cli-python:0.2.10' }
+    cmd: [ /cmd.sh ]
+    files: { /cmd.sh}
+    envVars:
+      subscriptionId:
+      loginId:
+      loginSecret:
+      name:
+      resourceGroup:
+      settings:
+      loginTenantId:
+      loginType:
