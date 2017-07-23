@@ -1,3 +1,5 @@
+[![Build Status](https://travis-ci.org/opspec-pkgs/azure.functionapp.appsettings.set.svg?branch=master)](https://travis-ci.org/opspec-pkgs/azure.functionapp.appsettings.set)
+
 # Problem statement
 sets azure functionapp appsettings
 
